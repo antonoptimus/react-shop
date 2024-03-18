@@ -67,7 +67,7 @@ code {
     width: 50rem;
     max-width: 95%;
 
-    animation: show 500ms ease-in-out;
+    animation: show 250ms ease-in-out;
 }
 
 .basket-close {
@@ -84,7 +84,7 @@ code {
 
 @keyframes show {
     from {
-        top: 70%;
+        top: 40%;
         opacity: 0;
     }
     to {
@@ -97,4 +97,26 @@ code {
     cursor: pointer;
     vertical-align: middle;
     color: #26a69a;
+}
+
+.total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#toast-container {
+    top: 3rem !important;
+    animation: fade-in 250ms ease-in-out;
+}
+
+@keyframes fade-in {
+    from {
+        transform: translateY(-2rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0rem);
+        opacity: 1;
+    }
 }

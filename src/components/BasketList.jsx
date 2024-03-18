@@ -6,7 +6,7 @@ export default function BasketList({
     handleBasketShow = Function.prototype,
     removeFromBasket = Function.prototype,
     incQuantity = Function.prototype,
-    decQuantity = Function.prototype
+    decQuantity = Function.prototype,
 }) {
     const totalPrice = order.reduce(
         (summ, curr) => summ + curr.price * curr.quantity,
@@ -29,8 +29,11 @@ export default function BasketList({
             ) : (
                 <li className='collection-item'>Корзина пуста</li>
             )}
-            <li className='collection-item active'>
+            <li className='collection-item active total'>
                 Общая стоимость: {totalPrice} руб.
+                <button className='btn-small grey darken-1'>
+                    Оформить заказ
+                </button>
             </li>
             <i
                 className='material-icons basket-close'

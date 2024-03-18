@@ -5,6 +5,8 @@ export default function BasketList({
     order = [],
     handleBasketShow = Function.prototype,
     removeFromBasket = Function.prototype,
+    incQuantity = Function.prototype,
+    decQuantity = Function.prototype
 }) {
     const totalPrice = order.reduce(
         (summ, curr) => summ + curr.price * curr.quantity,
@@ -15,7 +17,15 @@ export default function BasketList({
         <ul class='collection basket-list'>
             <li className='collection-item active'>Корзина</li>
             {order.length ? (
-                order.map((item) => <BasketItem key={item.id} {...item} removeFromBasket={removeFromBasket}/>)
+                order.map((item) => (
+                    <BasketItem
+                        key={item.id}
+                        {...item}
+                        incQuantity={incQuantity}
+                        decQuantity={decQuantity}
+                        removeFromBasket={removeFromBasket}
+                    />
+                ))
             ) : (
                 <li className='collection-item'>Корзина пуста</li>
             )}

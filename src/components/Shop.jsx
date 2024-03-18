@@ -39,6 +39,35 @@ export default function Shop() {
         }
     };
 
+    const incQuantity = (id) => {
+        const newOrder = order.map((item) => {
+            if (item.id === id) {
+                return {
+                    ...item,
+                    quantity: item.quantity + 1,
+                };
+            } else {
+                return item;
+            }
+        });
+        setOrder(newOrder);
+    };
+
+    const decQuantity = (id) => {
+        const newOrder = order.map((item) => {
+            if (item.id === id) {
+                const newQuantity = item.quantity - 1;
+                return {
+                    ...item,
+                    quantity: newQuantity >= 0 ? newQuantity : 0,
+                };
+            } else {
+                return item;
+            }
+        });
+        setOrder(newOrder);
+    };
+
     const removeFromBasket = (id) => {
         const newOrder = order.filter((item) => item.id !== id);
         setOrder(newOrder);
@@ -71,7 +100,13 @@ export default function Shop() {
                 <GoodsList goods={goods} addToBasket={addToBasket} />
             )}
             {isBasketShow && (
-                <BasketList order={order} handleBasketShow={handleBasketShow} removeFromBasket={removeFromBasket}/>
+                <BasketList
+                    order={order}
+                    handleBasketShow={handleBasketShow}
+                    removeFromBasket={removeFromBasket}
+                    incQuantity={incQuantity}
+                    decQuantity={decQuantity}
+                />
             )}
         </main>
     );
